@@ -1,0 +1,563 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/IMG_2343.jpeg">
+  <link rel="icon" href="/img/IMG_2343.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="dry">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="熟悉JNA机制JNA框架是一个开源的Java框架，是建立在经典的JNI基础之上的一个框架。JNA使用一个小型的JNI库插桩程序来动态调用本地代码。JNA是建立在JNI技术基础之上的一个Java类库，它使您可以方便地使用java直接访问动态链接库中的函数。原来使用JNI，你必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。JNA中，它提供了一个动态的C语言编写的转发器，可以自动实现Ja">
+<meta property="og:type" content="article">
+<meta property="og:title" content="熟悉JNA机制-实现Java调用C：HelloWorld和简单例子">
+<meta property="og:url" content="http://example.com/2022/04/04/%E7%86%9F%E6%82%89JNA%E6%9C%BA%E5%88%B6/index.html">
+<meta property="og:site_name" content="dry">
+<meta property="og:description" content="熟悉JNA机制JNA框架是一个开源的Java框架，是建立在经典的JNI基础之上的一个框架。JNA使用一个小型的JNI库插桩程序来动态调用本地代码。JNA是建立在JNI技术基础之上的一个Java类库，它使您可以方便地使用java直接访问动态链接库中的函数。原来使用JNI，你必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。JNA中，它提供了一个动态的C语言编写的转发器，可以自动实现Ja">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/04/04/%E7%86%9F%E6%82%89JNA%E6%9C%BA%E5%88%B6/import.png">
+<meta property="og:image" content="http://example.com/2022/04/04/%E7%86%9F%E6%82%89JNA%E6%9C%BA%E5%88%B6/helloworld.png">
+<meta property="og:image" content="http://example.com/2022/04/04/%E7%86%9F%E6%82%89JNA%E6%9C%BA%E5%88%B6/example1.png">
+<meta property="article:published_time" content="2022-04-04T01:53:42.000Z">
+<meta property="article:modified_time" content="2023-05-21T02:38:37.641Z">
+<meta property="article:author" content="dry">
+<meta property="article:tag" content="MacOS(M1)">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/04/04/%E7%86%9F%E6%82%89JNA%E6%9C%BA%E5%88%B6/import.png">
+  
+  
+  <title>熟悉JNA机制-实现Java调用C：HelloWorld和简单例子 - dry</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":"ture","baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"UX6gmF6tbvmfOeua33NTJEfq-gzGzoHsz","app_key":"VlbL3fgEUf7MFsHRqNkoI5y3","server_url":null,"path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>dry</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wallpa_img_1007.jpeg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="熟悉JNA机制-实现Java调用C：HelloWorld和简单例子">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-04 09:53" pubdate>
+        2022年4月4日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      22 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">熟悉JNA机制-实现Java调用C：HelloWorld和简单例子</h1>
+            
+            <div class="markdown-body">
+              <h1 id="熟悉JNA机制"><a href="#熟悉JNA机制" class="headerlink" title="熟悉JNA机制"></a>熟悉JNA机制</h1><p>JNA框架是一个开源的Java框架，是建立在经典的JNI基础之上的一个框架。<br>JNA使用一个小型的JNI库插桩程序来动态调用本地代码。<br>JNA是建立在JNI技术基础之上的一个Java类库，它使您可以方便地使用java直接访问动态链接库中的函数。<br>原来使用JNI，你必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。<br>JNA中，它提供了一个动态的C语言编写的转发器，可以自动实现Java和C的数据类型映射，不再需要编写C动态链接库。</p>
+<h2 id="在Idea中使用JNA："><a href="#在Idea中使用JNA：" class="headerlink" title="在Idea中使用JNA："></a>在Idea中使用JNA：</h2><ol>
+<li>获取到JNA.jar</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://github.com/java-native-access/jna">GitHub - java-native-access/jna: Java Native Access</a></p>
+<p><a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/net/java/dev/jna/jna/5.11.0/jna-5.11.0.jar"></a></p>
+<ol start="2">
+<li>在Idea创建Java项目，导入JAR包<br>Idea: File → Project Structure → Libraries → “+”<br>将下载的jna.jar 加入到项目中</li>
+</ol>
+<p><img src="import.png" srcset="/img/loading.gif" lazyload alt="导入Jar包"></p>
+<ol>
+<li>在项目src文件夹下，新建Test.java:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.jna.Library;<br><span class="hljs-keyword">import</span> com.sun.jna.Native;<br><span class="hljs-keyword">import</span> com.sun.jna.Platform;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span> &#123;<br>    <span class="hljs-comment">// This is the standard, stable way of mapping, which supports extensive</span><br>    <span class="hljs-comment">// customization and mapping of Java to native types.</span><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CLibrary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Library</span> &#123;<br>        <span class="hljs-type">CLibrary</span> <span class="hljs-variable">INSTANCE</span> <span class="hljs-operator">=</span> (CLibrary)<br>                Native.loadLibrary((Platform.isWindows() ? <span class="hljs-string">&quot;msvcrt&quot;</span> : <span class="hljs-string">&quot;c&quot;</span>),<br>                        CLibrary.class);<br><br>        <span class="hljs-keyword">void</span> <span class="hljs-title function_">printf</span><span class="hljs-params">(String format, Object... args)</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">j</span>  <span class="hljs-operator">=</span> <span class="hljs-number">1</span> ;<br>        CLibrary.INSTANCE.printf(<span class="hljs-string">&quot;Hello,%d World\n&quot;</span>,j);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i &lt; args.length;i++) &#123;<br>            CLibrary.INSTANCE.printf(<span class="hljs-string">&quot;Argument %d: %s\n&quot;</span>, i, args[i]);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>直接运行：</li>
+</ol>
+<p><img src="helloworld.png" srcset="/img/loading.gif" lazyload alt="HelloWorld"></p>
+<h1 id="JNA-Example："><a href="#JNA-Example：" class="headerlink" title="JNA Example："></a>JNA Example：</h1><p><a target="_blank" rel="noopener" href="https://www.eshayne.com/jnaex/index.html">JNA Examples</a></p>
+<h1 id="使用Example"><a href="#使用Example" class="headerlink" title="使用Example"></a>使用Example</h1><h2 id="Example入门：Example-1-Send-and-Receive-an-Integer"><a href="#Example入门：Example-1-Send-and-Receive-an-Integer" class="headerlink" title="Example入门：Example #1: Send and Receive an Integer"></a>Example入门：<strong>Example #1: Send and Receive an Integer</strong></h2><ol>
+<li>新建example.c文件：</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">example1</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> val * <span class="hljs-number">2</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>在当前文件夹下终端运行：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">gcc -dynamiclib -o libtestlib.dylib example.c<br></code></pre></td></tr></table></figure>
+
+<p>生成Java调用需要的动态链接库</p>
+<ol>
+<li>新建Integer类文件：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> com.sun.jna.Library;<br><span class="hljs-keyword">import</span> com.sun.jna.Native;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Integer</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CLibrary</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Library</span> &#123;<br>        <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">example1</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">final</span> <span class="hljs-type">CLibrary</span> <span class="hljs-variable">clib</span> <span class="hljs-operator">=</span> (CLibrary) Native.loadLibrary(<span class="hljs-string">&quot;libtestlib&quot;</span>, CLibrary.class);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">newVal</span> <span class="hljs-operator">=</span> clib.example1(<span class="hljs-number">23</span>);<br>        System.out.println(<span class="hljs-string">&quot;example 1: &quot;</span> + newVal);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>运行</li>
+</ol>
+<p><img src="example1.png" srcset="/img/loading.gif" lazyload alt="example #1"></p>
+<h2 id="过程中出现的问题："><a href="#过程中出现的问题：" class="headerlink" title="过程中出现的问题："></a>过程中出现的问题：</h2><p>运行出现<code>Native library (darwin-aarch64/liblibtestlib.dylib) not found in resource path</code>问题</p>
+<ul>
+<li>解决：  将Native.loadLibrary()方法中的name 更改为绝对路径（将“libtestlib” 更换为此文件的绝对路径），即可运行</li>
+</ul>
+<h2 id="Java调用C-Struct-结构体出现的问题："><a href="#Java调用C-Struct-结构体出现的问题：" class="headerlink" title="Java调用C Struct 结构体出现的问题："></a>Java调用C Struct 结构体出现的问题：</h2><p>运行出现<code>Structure.getFieldOrder() on class Send_Struct.Test_S_S$CLibrary$Example3Struct$ByReference returns names ([]) which do not match declared field names ([value])</code></p>
+<p>此类ByReference问题，在jna 5.x中，需要加@FieldOrder()注解</p>
+<p>如在Example #3中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">		<span class="hljs-meta">@Structure</span>.FieldOrder(&#123;<span class="hljs-string">&quot;value&quot;</span>&#125;)<br>        <span class="hljs-keyword">class</span> <span class="hljs-title class_">Example3Struct</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Structure</span> &#123;<br>				...<br>		<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ByReference</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Example3Struct</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Structure</span>.ByReference &#123;&#125;<br>        <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> value;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>便可运行。</p>
+<hr>
+<h2 id="Ref："><a href="#Ref：" class="headerlink" title="Ref："></a>Ref：</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lanxuezaipiao/p/3635556.html">https://www.cnblogs.com/lanxuezaipiao/p/3635556.html</a><br><a target="_blank" rel="noopener" href="https://stackoverflow.nilmap.com/question?dest_url=https://stackoverflow.com/questions/64835834/jna-structure-getfieldorder-does-not-match-declared-field-names">https://stackoverflow.nilmap.com/question?dest_url=https://stackoverflow.com/questions/64835834/jna-structure-getfieldorder-does-not-match-declared-field-names</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.saoniuhuo.com/question/detail-2074103.html">https://www.saoniuhuo.com/question/detail-2074103.html</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/JNI/">JNI</a>
+                    
+                      <a class="hover-with-bg" href="/categories/JNI/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/MacOS-M1/">MacOS(M1)</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/05/%E7%86%9F%E6%82%89swig-%E5%AE%9E%E7%8E%B0java%E8%B0%83%E7%94%A8c%20c++%20/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">熟悉swig-实现java调用c/c++</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/30/%E7%86%9F%E6%82%89JNI%E6%9C%BA%E5%88%B6-Java%E8%B0%83%E7%94%A8C-C-%E7%AE%80%E5%8D%95%E5%AE%9E%E7%8E%B0/">
+                        <span class="hidden-mobile">熟悉JNI机制-Java调用C/C++简单实现(Mac M1)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
