@@ -16,12 +16,12 @@
   <meta name="author" content="dry">
   <meta name="keywords" content="">
   
-    <meta name="description" content="熟悉JNI机制-Idea下JNI编程在IDEA平台下配置JNI编程环境，能省去重复相同的命令行操作，像：javah、gcc命令，节约开发时间。 JNI编程命令行下的操作，可参考：http:&#x2F;&#x2F;t.csdn.cn&#x2F;EO09I  工程目录如下： 1.写Java调用C代码123456789101112131415package Demo;public class JniHello &amp;#123;    s">
+    <meta name="description" content="熟悉JNI机制-Idea下JNI编程在IDEA平台下配置JNI编程环境，能省去重复相同的命令行操作，像：javah、gcc命令，节约开发时间。 JNI编程命令行下的操作，可参考：http:&#x2F;&#x2F;t.csdn.cn&#x2F;EO09I  工程目录如下：   1.写Java调用C代码123456789101112131415package Demo;public class JniHello &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="熟悉JNI机制-Idea下JNI编程">
 <meta property="og:url" content="http://example.com/2022/07/05/%E7%86%9F%E6%82%89JNI%E6%9C%BA%E5%88%B6-Idea%E4%B8%8BJNI%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="dry">
-<meta property="og:description" content="熟悉JNI机制-Idea下JNI编程在IDEA平台下配置JNI编程环境，能省去重复相同的命令行操作，像：javah、gcc命令，节约开发时间。 JNI编程命令行下的操作，可参考：http:&#x2F;&#x2F;t.csdn.cn&#x2F;EO09I  工程目录如下： 1.写Java调用C代码123456789101112131415package Demo;public class JniHello &amp;#123;    s">
+<meta property="og:description" content="熟悉JNI机制-Idea下JNI编程在IDEA平台下配置JNI编程环境，能省去重复相同的命令行操作，像：javah、gcc命令，节约开发时间。 JNI编程命令行下的操作，可参考：http:&#x2F;&#x2F;t.csdn.cn&#x2F;EO09I  工程目录如下：   1.写Java调用C代码123456789101112131415package Demo;public class JniHello &amp;#123;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/07/05/%E7%86%9F%E6%82%89JNI%E6%9C%BA%E5%88%B6-Idea%E4%B8%8BJNI%E7%BC%96%E7%A8%8B/Untitled.png">
 <meta property="og:image" content="http://example.com/2022/07/05/%E7%86%9F%E6%82%89JNI%E6%9C%BA%E5%88%B6-Idea%E4%B8%8BJNI%E7%BC%96%E7%A8%8B/Untitled1.png">
@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/2022/07/05/%E7%86%9F%E6%82%89JNI%E6%9C%BA%E5%88%B6-Idea%E4%B8%8BJNI%E7%BC%96%E7%A8%8B/Untitled5.png">
 <meta property="og:image" content="http://example.com/2022/07/05/%E7%86%9F%E6%82%89JNI%E6%9C%BA%E5%88%B6-Idea%E4%B8%8BJNI%E7%BC%96%E7%A8%8B/Untitled6.png">
 <meta property="article:published_time" content="2022-07-05T04:20:44.000Z">
-<meta property="article:modified_time" content="2022-07-05T12:28:36.350Z">
+<meta property="article:modified_time" content="2023-05-28T06:27:17.294Z">
 <meta property="article:author" content="dry">
 <meta property="article:tag" content="MacOS(M1)">
 <meta name="twitter:card" content="summary_large_image">
@@ -83,11 +83,11 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Driverse</strong>
+      <strong>dry&#39;blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -179,10 +179,10 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/wallpa_img_1007.jpeg') no-repeat center center;
+         style="background: url('/img/header-bg.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="熟悉JNI机制-Idea下JNI编程">
               
@@ -257,22 +257,28 @@
               <h1 id="熟悉JNI机制-Idea下JNI编程"><a href="#熟悉JNI机制-Idea下JNI编程" class="headerlink" title="熟悉JNI机制-Idea下JNI编程"></a>熟悉JNI机制-Idea下JNI编程</h1><p>在IDEA平台下配置JNI编程环境，能省去重复相同的命令行操作，像：javah、gcc命令，节约开发时间。</p>
 <p>JNI编程命令行下的操作，可参考：<a target="_blank" rel="noopener" href="http://t.csdn.cn/EO09I">http://t.csdn.cn/EO09I</a></p>
 <hr>
-<h2 id="工程目录如下："><a href="#工程目录如下：" class="headerlink" title="工程目录如下："></a>工程目录如下：</h2><p><img src="Untitled.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="工程目录如下："><a href="#工程目录如下：" class="headerlink" title="工程目录如下："></a>工程目录如下：</h2><img src="./Untitled.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:40%;" />
+
+
 <h2 id="1-写Java调用C代码"><a href="#1-写Java调用C代码" class="headerlink" title="1.写Java调用C代码"></a>1.写Java调用C代码</h2><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> Demo;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">JniHello</span> &#123;<br>    <span class="hljs-keyword">static</span> &#123;<br>        System.loadLibrary(<span class="hljs-string">&quot;Demo_JniHello&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">native</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">sayhello</span><span class="hljs-params">()</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">JniHello</span>().sayhello();<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="2-“自动化”-javah-：使用Idea-External-Tools-生成-h文件"><a href="#2-“自动化”-javah-：使用Idea-External-Tools-生成-h文件" class="headerlink" title="2.“自动化” javah ：使用Idea External Tools 生成.h文件"></a>2.“自动化” <code>javah</code> ：使用Idea External Tools 生成.h文件</h2><p>External Tools位置：Preference→Tools→External Tools→ +</p>
-<p><img src="Untitled1.png" srcset="/img/loading.gif" lazyload></p>
+<img src="./Untitled1.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%;" />
+
 <p>根据项目的实际目录配置好自动化执行内容：</p>
-<p><img src="Untitled2.png" srcset="/img/loading.gif" lazyload></p>
+<img src="./Untitled2.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%;" />
+
 <p>在当前java文件下右键执行<code>javah</code>，生成相应的头文件<code>Demo_JniHello.h</code>（文件内容自动生成）：</p>
-<p><img src="Untitled3.png" srcset="/img/loading.gif" lazyload></p>
+<img src="./Untitled3.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%;" />
+
 <hr>
 <h2 id="3-写Java调用的C代码"><a href="#3-写Java调用的C代码" class="headerlink" title="3.写Java调用的C代码"></a>3.写Java调用的C代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;jni.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;Demo_JniHello.h&quot;</span></span><br><br>JNIEXPORT <span class="hljs-type">void</span> JNICALL <span class="hljs-title function_">Java_Demo_JniHello_sayhello</span> <span class="hljs-params">(JNIEnv * env, jobject thisObj)</span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello World!\n&quot;</span>);<br>    <span class="hljs-keyword">return</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="4-“自动化”gcc命令：使用Idea-External-Tools-生成jnilib库"><a href="#4-“自动化”gcc命令：使用Idea-External-Tools-生成jnilib库" class="headerlink" title="4.“自动化”gcc命令：使用Idea External Tools 生成jnilib库"></a>4.“自动化”<code>gcc</code>命令：使用Idea External Tools 生成<code>jnilib</code>库</h2><p>与第2步相同，先新建一个External Tools并配置好执行内容：</p>
-<p><img src="Untitled4.png" srcset="/img/loading.gif" lazyload></p>
+<img src="./Untitled4.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%;" />
+
 <p>Arguments：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">-dynamiclib<br>-I<br>（JDKPath）<br>$FileRelativeDir$/$FileNameWithoutExtension$.c<br>-o<br>lib$FileNameWithoutExtension$.jnilib<br></code></pre></td></tr></table></figure>
 
@@ -283,12 +289,14 @@
 <li>Mac: <code>lib***.jnilib</code></li>
 </ul>
 <hr>
-<h2 id="5-运行java"><a href="#5-运行java" class="headerlink" title="5.运行java"></a>5.运行java</h2><p><img src="Untitled5.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5-运行java"><a href="#5-运行java" class="headerlink" title="5.运行java"></a>5.运行java</h2><img src="./Untitled5.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%;" />
+
 <p>运行时出现的问题：</p>
 <p><code>错误: 找不到 &#39;Demo_JniHello&#39; 的类文件</code></p>
 <p>解决方法：</p>
 <p>打开Idea Run/Debug Configuration → Add VM options：</p>
-<p><img src="Untitled6.png" srcset="/img/loading.gif" lazyload></p>
+<img src="./Untitled6.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%;" />
+
 <p>VM options：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">-Djava.library.path=$ProjectFileDir$<br></code></pre></td></tr></table></figure>
 

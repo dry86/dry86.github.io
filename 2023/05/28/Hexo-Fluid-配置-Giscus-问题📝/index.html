@@ -16,12 +16,12 @@
   <meta name="author" content="dry">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hexo Fluid 配置 Giscus 问题📝配置Giscus评论模块，是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。 怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。 在Fluid配置指南的引导下，我没有找到直接">
+    <meta name="description" content="Hexo Fluid 配置 Giscus 问题📝配置Giscus评论模块，原本是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。 怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。 在Fluid配置指南的引导下，我没有找到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo Fluid 配置 Giscus 问题📝">
 <meta property="og:url" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/index.html">
 <meta property="og:site_name" content="dry">
-<meta property="og:description" content="Hexo Fluid 配置 Giscus 问题📝配置Giscus评论模块，是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。 怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。 在Fluid配置指南的引导下，我没有找到直接">
+<meta property="og:description" content="Hexo Fluid 配置 Giscus 问题📝配置Giscus评论模块，原本是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。 怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。 在Fluid配置指南的引导下，我没有找到">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/giscus_ejs.png">
 <meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/comments_load.png">
@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/giscus_ejs_log.png">
 <meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/nodejs_console_log.png">
 <meta property="article:published_time" content="2023-05-28T04:12:23.008Z">
-<meta property="article:modified_time" content="2023-05-28T05:39:46.154Z">
+<meta property="article:modified_time" content="2023-05-28T05:42:26.865Z">
 <meta property="article:author" content="dry">
 <meta property="article:tag" content="Issue">
 <meta name="twitter:card" content="summary_large_image">
@@ -81,11 +81,11 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Driverse</strong>
+      <strong>dry&#39;blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -177,10 +177,10 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/wallpa_img_1007.jpeg') no-repeat center center;
+         style="background: url('/img/header-bg.jpeg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
             <span class="h2" id="subtitle" title="Hexo Fluid 配置 Giscus 问题📝">
               
@@ -252,7 +252,7 @@
             <h1 style="display: none">Hexo Fluid 配置 Giscus 问题📝</h1>
             
             <div class="markdown-body">
-              <h1 id="Hexo-Fluid-配置-Giscus-问题📝"><a href="#Hexo-Fluid-配置-Giscus-问题📝" class="headerlink" title="Hexo Fluid 配置 Giscus 问题📝"></a>Hexo Fluid 配置 Giscus 问题📝</h1><p>配置Giscus评论模块，是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。</p>
+              <h1 id="Hexo-Fluid-配置-Giscus-问题📝"><a href="#Hexo-Fluid-配置-Giscus-问题📝" class="headerlink" title="Hexo Fluid 配置 Giscus 问题📝"></a>Hexo Fluid 配置 Giscus 问题📝</h1><p>配置Giscus评论模块，原本是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。</p>
 <p>怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。</p>
 <p>在<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E4%BB%A3%E7%A0%81%E5%9D%97">Fluid配置指南</a>的引导下，我没有找到直接加入Fluid的<code>_config.yml</code>配置代码, Giscus官方文档是JS配置，需要从JS调到yml，没有配置经验，便打算找一下大家的配置代码，找到了以下配置代码：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">giscus:</span><br>  <span class="hljs-attr">repo:</span> <br>  <span class="hljs-attr">repo_id:</span> <br>  <span class="hljs-attr">category:</span> <br>  <span class="hljs-attr">category_id:</span> <br>  <span class="hljs-comment"># Available values: pathname | url | title | og:title</span><br>  <span class="hljs-attr">mapping:</span> <span class="hljs-string">pathname</span><br>  <span class="hljs-comment"># Available values: 0 | 1</span><br>  <span class="hljs-attr">reactions_enabled:</span> <span class="hljs-number">1</span><br>   <span class="hljs-comment"># Available values: 0 | 1</span><br>  <span class="hljs-attr">emit_metadata:</span> <span class="hljs-number">0</span><br>  <span class="hljs-comment"># Available values: light | dark | dark_high_contrast | transparent_dark | preferred-color-scheme</span><br>  <span class="hljs-attr">theme:</span> <span class="hljs-string">preferred_color_scheme</span><br>  <span class="hljs-comment"># Available values: en | zh-CN</span><br>  <span class="hljs-attr">lang:</span> <span class="hljs-string">zh-CN</span><br>  <span class="hljs-comment"># Place the comment box above the comments</span><br>  <span class="hljs-attr">input_position:</span> <span class="hljs-string">top</span><br></code></pre></td></tr></table></figure>
