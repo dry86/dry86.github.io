@@ -16,27 +16,23 @@
   <meta name="author" content="dry">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hexo Fluid 配置 Giscus 问题📝配置Giscus评论模块，原本是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。 怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。 在Fluid配置指南的引导下，我没有找到">
+    <meta name="description" content="最近出了一个千问语音输入法，感觉是用了语音大模型来精确化识别输入，用了几天，识别的准确度相当高了，比当前 Mac 自带的语音识别输入会高很多，而且输入方式也挺方便的，方便了对Blog的一个记录。 随着传播形式的改变，感觉还是应该有一些输出来适应这种方式的变化，正如现在自媒体的流行，是一种个人输出的表现。面对大量的观点，也应该思考可以留下什么（还是一种表达欲所在吧），通过这种记录的方式能够更好的整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo Fluid 配置 Giscus 问题📝">
-<meta property="og:url" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/index.html">
+<meta property="og:title" content="时间机器26">
+<meta property="og:url" content="http://example.com/2026/07/13/%E6%97%B6%E9%97%B4%E6%9C%BA%E5%99%A826/index.html">
 <meta property="og:site_name" content="dry">
-<meta property="og:description" content="Hexo Fluid 配置 Giscus 问题📝配置Giscus评论模块，原本是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。 怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。 在Fluid配置指南的引导下，我没有找到">
+<meta property="og:description" content="最近出了一个千问语音输入法，感觉是用了语音大模型来精确化识别输入，用了几天，识别的准确度相当高了，比当前 Mac 自带的语音识别输入会高很多，而且输入方式也挺方便的，方便了对Blog的一个记录。 随着传播形式的改变，感觉还是应该有一些输出来适应这种方式的变化，正如现在自媒体的流行，是一种个人输出的表现。面对大量的观点，也应该思考可以留下什么（还是一种表达欲所在吧），通过这种记录的方式能够更好的整理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/giscus_ejs.png">
-<meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/comments_load.png">
-<meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/ejs_code.png">
-<meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/giscus_ejs_log.png">
-<meta property="og:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/nodejs_console_log.png">
-<meta property="article:published_time" content="2023-05-28T04:12:23.008Z">
-<meta property="article:modified_time" content="2023-05-28T05:42:26.865Z">
+<meta property="og:image" content="http://example.com/2026/07/13/%E6%97%B6%E9%97%B4%E6%9C%BA%E5%99%A826/IMG_2383.jpg">
+<meta property="article:published_time" content="2026-07-13T14:11:53.000Z">
+<meta property="article:modified_time" content="2026-07-13T14:35:54.680Z">
 <meta property="article:author" content="dry">
-<meta property="article:tag" content="Issue">
+<meta property="article:tag" content="TimeMachine">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/giscus_ejs.png">
+<meta name="twitter:image" content="http://example.com/2026/07/13/%E6%97%B6%E9%97%B4%E6%9C%BA%E5%99%A826/IMG_2383.jpg">
   
   
-  <title>Hexo Fluid 配置 Giscus 问题📝 - dry</title>
+  <title>时间机器26 - dry</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -182,7 +178,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.2)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hexo Fluid 配置 Giscus 问题📝">
+            <span class="h2" id="subtitle" title="时间机器26">
               
             </span>
 
@@ -192,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-05-28 12:12" pubdate>
-        2023年5月28日 中午
+      <time datetime="2026-07-13 22:11" pubdate>
+        2026年7月13日 晚上
       </time>
     </span>
   
@@ -203,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      225 字
     </span>
   
 
@@ -212,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18 分钟
+      2 分钟
     </span>
   
 
@@ -249,71 +245,29 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hexo Fluid 配置 Giscus 问题📝</h1>
+            <h1 style="display: none">时间机器26</h1>
             
             <div class="markdown-body">
-              <h1 id="Hexo-Fluid-配置-Giscus-问题📝"><a href="#Hexo-Fluid-配置-Giscus-问题📝" class="headerlink" title="Hexo Fluid 配置 Giscus 问题📝"></a>Hexo Fluid 配置 Giscus 问题📝</h1><p>配置Giscus评论模块，原本是一个步骤明确的过程，但在我的Fluid + Giscus配置过程中出现了一个不易察觉的配置问题，让人一度怀疑版本兼容问题。</p>
-<p>怀疑版本兼容问题的原因是在我的本地搭建Hexo Fluid时，Fluid主题还未支持Giscus 评论系统，最近发现了Giscus希望能加在Blog上。</p>
-<p>在<a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E4%BB%A3%E7%A0%81%E5%9D%97">Fluid配置指南</a>的引导下，我没有找到直接加入Fluid的<code>_config.yml</code>配置代码, Giscus官方文档是JS配置，需要从JS调到yml，没有配置经验，便打算找一下大家的配置代码，找到了以下配置代码：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">giscus:</span><br>  <span class="hljs-attr">repo:</span> <br>  <span class="hljs-attr">repo_id:</span> <br>  <span class="hljs-attr">category:</span> <br>  <span class="hljs-attr">category_id:</span> <br>  <span class="hljs-comment"># Available values: pathname | url | title | og:title</span><br>  <span class="hljs-attr">mapping:</span> <span class="hljs-string">pathname</span><br>  <span class="hljs-comment"># Available values: 0 | 1</span><br>  <span class="hljs-attr">reactions_enabled:</span> <span class="hljs-number">1</span><br>   <span class="hljs-comment"># Available values: 0 | 1</span><br>  <span class="hljs-attr">emit_metadata:</span> <span class="hljs-number">0</span><br>  <span class="hljs-comment"># Available values: light | dark | dark_high_contrast | transparent_dark | preferred-color-scheme</span><br>  <span class="hljs-attr">theme:</span> <span class="hljs-string">preferred_color_scheme</span><br>  <span class="hljs-comment"># Available values: en | zh-CN</span><br>  <span class="hljs-attr">lang:</span> <span class="hljs-string">zh-CN</span><br>  <span class="hljs-comment"># Place the comment box above the comments</span><br>  <span class="hljs-attr">input_position:</span> <span class="hljs-string">top</span><br></code></pre></td></tr></table></figure>
+              <p>最近出了一个千问语音输入法，感觉是用了语音大模型来精确化识别输入，用了几天，识别的准确度相当高了，比当前 Mac 自带的语音识别输入会高很多，而且输入方式也挺方便的，方便了对Blog的一个记录。</p>
+<p>随着传播形式的改变，感觉还是应该有一些输出来适应这种方式的变化，正如现在自媒体的流行，是一种个人输出的表现。面对大量的观点，也应该思考可以留下什么（还是一种表达欲所在吧），通过这种记录的方式能够更好的整理，做一个自己的自媒体hh。</p>
+<p>本文文字由千问语音输入法输入。</p>
+<img src="/2026/07/13/%E6%97%B6%E9%97%B4%E6%9C%BA%E5%99%A826/IMG_2383.jpg" srcset="/img/loading.gif" lazyload class="">
 
-<p>想着将代码粘到<code>_config.yml</code>中，再配置一下</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">comments:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-comment"># 指定的插件，需要同时设置对应插件的必要参数</span><br>  <span class="hljs-comment"># The specified plugin needs to set the necessary parameters at the same time</span><br>  <span class="hljs-comment"># Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">giscus</span><br></code></pre></td></tr></table></figure>
 
-<p>就OK了. 没想到Bug在这里就写下了.</p>
-<p>因为Fluid版本较旧, 还需要在Fluid的layout comments模块下加入Giscus的ejs模版文件, 此文件可以在Fluid的<a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid/blob/master/layout/_partials/comments/giscus.ejs">GitHub</a>中找到. 如下图所示:</p>
-<img src="./giscus_ejs.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:40%;" />
 
-<p>至此, <code>hexo g</code>不再报错, 配置完成.</p>
-<p>本地运行<code>hexo s</code>, 发现comments模块没有加载!</p>
-<p>配置出问题了? 但是hexo 可以正常运行. </p>
-<p>在网络上找了能找到的相关文章, 好像都没有这样的问题出现. </p>
-<hr>
-<h2 id="调试查找问题"><a href="#调试查找问题" class="headerlink" title="调试查找问题"></a>调试查找问题</h2><p>查看html源代码, 原来js没有加载Giscus评论.</p>
-<img src="./comments_load.png" srcset="/img/loading.gif" lazyload alt="comments_load" style="display: block; margin: 0 auto; zoom:40%; margin-bottom: 50px;" />
 
-<p>既然没有加载, 那么就要判断是否执行到了<code>giscus.ejs</code>.</p>
-<img src="./ejs_code.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%; margin-bottom: 50px; " alt="giscus.ejs"  />
 
-<p>可以看到 <code>giscus.ejs</code>开头有一if判断</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ejs">&lt;% if (theme.giscus &amp;&amp; theme.giscus[&#x27;repo&#x27;] &amp;&amp; theme.giscus[&#x27;repo-id&#x27;]) &#123; %&gt;<br></code></pre></td></tr></table></figure>
-
-<p>在if判断之前打印一下就可以看到代码的执行.</p>
-<p>​    在 Node.js 的环境中，可以通过在 <code>&lt;% %&gt;</code> 标签内使用 JavaScript 代码来实现。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ejs">&lt;% console.log(variable) %&gt;<br></code></pre></td></tr></table></figure>
-
-<p>加入打印之后的<code>giscus.ejs</code>,如下:</p>
-<img src="./giscus_ejs_log.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:30%; margin-bottom: 50px; " alt="giscus_ejs_log"  />
-
-<p>运行打印输出,如下:</p>
-<img src="./nodejs_console_log.png" srcset="/img/loading.gif" lazyload style="display: block; margin: 0 auto; zoom:40%; margin-bottom: 50px; " alt="nodejs_console_log"  />
-
-<p>第三个变量<code>theme.giscus[&#39;repo-id&#39;]</code>竟然没有打印! </p>
-<p>找到了问题出现的地方.</p>
-<p>原来在网络上找到的Giscus的yml配置代码, 并不是与Fluid相匹配的, 而是<code>blog/node_modules/hexo-next-giscus/default.yaml</code>中的默认模版. Fluid的配置代码是</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">giscus:</span><br>  <span class="hljs-attr">repo:</span> <br>  <span class="hljs-attr">repo-id:</span> <br>  <span class="hljs-attr">category:</span> <br>  <span class="hljs-attr">category-id:</span> <br>  <span class="hljs-comment"># Available values: pathname | url | title | og:title</span><br>  <span class="hljs-attr">mapping:</span> <span class="hljs-string">pathname</span><br>  <span class="hljs-comment"># Available values: 0 | 1</span><br>  <span class="hljs-attr">reactions-enabled:</span> <span class="hljs-number">1</span><br>   <span class="hljs-comment"># Available values: 0 | 1</span><br>  <span class="hljs-attr">emit-metadata:</span> <span class="hljs-number">0</span><br>  <span class="hljs-comment"># Available values: light | dark | dark_high_contrast | transparent_dark | preferred-color-scheme</span><br>  <span class="hljs-attr">theme:</span> <span class="hljs-string">preferred_color_scheme</span><br>  <span class="hljs-comment"># Available values: en | zh-CN</span><br>  <span class="hljs-attr">lang:</span> <span class="hljs-string">zh-CN</span><br>  <span class="hljs-comment"># Place the comment box above the comments</span><br>  <span class="hljs-attr">input-position:</span> <span class="hljs-string">top</span><br></code></pre></td></tr></table></figure>
-
-<p>如果不仔细看, 可能一下看不出<code>default.yaml</code>与<code>_config.yml</code>的区别:</p>
-<p>​    在<code>_config.yml</code>中Key是<code>repo-id</code>,而<code>default.yaml</code>中Key是<code>repo_id</code></p>
-<p>按照Fluid的配置风格修改后, Giscus评论模块出现~</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Bug%F0%9F%93%9D/">Bug📝</a>
-                    
-                  </div>
-                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Issue/">Issue</a>
+                      <a class="hover-with-bg" href="/tags/TimeMachine/">TimeMachine</a>
                     
                   </div>
                 
@@ -330,18 +284,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/07/13/%E6%97%B6%E9%97%B4%E6%9C%BA%E5%99%A826/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">时间机器26</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/14/win11-for-arm-%E6%9B%B4%E6%96%B0%E4%BD%BF%E7%B3%BB%E7%BB%9F%E5%B4%A9%E6%BA%83Record/">
-                        <span class="hidden-mobile">win11 for arm  KB5016629 更新使系统崩溃 Record</span>
+                      <a href="/2023/05/28/Hexo-Fluid-%E9%85%8D%E7%BD%AE-Giscus-%E9%97%AE%E9%A2%98%F0%9F%93%9D/">
+                        <span class="hidden-mobile">Hexo Fluid 配置 Giscus 问题📝</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
